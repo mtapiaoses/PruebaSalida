@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h1>Bienvenido a TeLoEnvio</h1>
+      <p>¡Encuentra los productos que necesitas y recíbelos en la comodidad de tu hogar!</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center cont-card">
+    {% for x in lista %}
+
+    <div class="col-sm-3 m-1">
+
+        <div class="card " style="box-shadow: 2px 2px 10px rgba(0,0,0,0.3);">
+
+
+            <div class="card-body">
+
+                <div class="text-center"> <a href="#registro">
+                        <img src="{{x.imagen_f.url}}" alt="" width="200px">
+                    </a></div>
+
+                <div class="ml-5"><strong>{{x.nombre}}</strong> </div>
+
+                <div class="ml-5" style="color: #0c0d0d;"><h2>$ {{x.precio}} c/u</h2> </div>
+
+                <div class="text-center"style="background-color: rgba(143, 247, 46,0); padding: 5px; font-size: 20px;">
+                <a href="#registro" style="text-shadow: 2px 2px 10px rgba(165, 39, 39, 0.5);" >REGISTRATE</a>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+  
+
+    <div class="col-md-6">
+      <h2>Suscribete</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ formulario }}
+        <button type="submit" class="btn btn-primary">Suscribirse</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

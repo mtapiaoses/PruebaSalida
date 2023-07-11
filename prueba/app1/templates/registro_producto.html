@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block contenido %}
+{% load static %}
+<div class="row justify-content-center">
+  <div class="col-sm-6">
+    <div class="card">
+
+      <div class="card-header text-center" style="background-color:#00D879 ; color: white;">
+        <img src="{% static '/img/logo4.png' %}" alt="" width="220px"><br>
+        
+        Registro de Producto</div>
+      <div class="card-body">
+
+
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label for="">ARCHIVO</label><br>
+          <input type="file" name="archivo"><br>
+          <label for="">NOMBRE</label><br>
+          <input type="text" name="nombre"><br>
+          <label for="">DESCRIPCION</label><br>
+          <input type="text" name="descripcion"><br>
+          <label for="">PRECIO</label><br>
+          <input type="number" name="precio"><br>
+          
+          
+          <hr>
+          <button type="submit" class="btn mx-3" style="background-color:rgb(4, 184, 115);color:white;">Agregar
+            Producto</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

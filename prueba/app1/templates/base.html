@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: white;
+    }
+
+    .main {
+      min-height: 700px;
+    }
+
+    footer {
+
+      background-color: gray;
+      color: white;
+      min-height: 150px;
+    }
+
+    .cont-card img:hover {
+      width: 205px;
+
+
+    }
+  </style>
+<head>
+  <title>TeLoEnvio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md" style="background-color: #44abce;">
+    <a class="navbar-brand" href="/"><img src="{% static 'img/logo1.png' %}" alt="" width="60px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-itauem">
+          <a class="btn btn-primary" href="/logout_view">Cerrar Sesión</a>
+        </li>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: #32d748;">Carrito
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" style="color:black; width: 500px;">
+            {% for x in request.session.carrito %}
+            <li>
+              <div class="card">
+                <div class="card-header">{{ x.cantidad }} unidades de {{ x.nombre }}</div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% else %}
+        <a class="btn btn-warning" href="/login_view/">Iniciar Sesión</a>
+        <!-- <button type="submit" class="btn btn-primary">Suscribirse</button> -->
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid main">
+    {% block contenido %}
+    {% endblock %}
+  </div>
+
+  <footer class="footer justify-content-center text-center">
+    <div> </div>
+    <div class="container-fluid">
+      <p>&copy; 2023 TeLoEnvio.com. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

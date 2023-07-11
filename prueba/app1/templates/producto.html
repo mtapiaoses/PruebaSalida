@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block contenido %}
+{% load static %}
+<div class="row p-3">
+
+       <div class="col-sm-5 m-5 text-center" style="font-size:40px ">
+              <div>{{producto.nombre}}</div>
+              <div style="color: blue;font-size: 60px;"> $ {{producto.precio}} c/u</div>
+              <div>{{producto.descripcion}}</div>
+            
+       </div>
+       <div class="col-sm-5">
+
+              <img src="{{producto.imagen_f.url}}" alt="" width="400">
+       </div>
+</div>
+
+
+{% endblock %}

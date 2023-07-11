@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block contenido %}
+{% load static %}
+
+
+<div class="row justify-content-center m-4" style="background-color: rgba(255,255,255,1);">
+    
+    <div class="col-sm-8">
+
+    <button class="btn btn-warning"><a href="/tomar_pedido_staff/">VOLVER A LOS PRODUCTOS</a></button>
+
+    
+        <div class="card">
+<div class="card-header" style="background-color: #00D879; color: white;">
+
+    FINALIZAR PEDIDO
+</div>
+<div class="card-body">
+ 
+  <form method="POST">
+
+        {% csrf_token %}
+        {{formulario}}
+        <hr>
+        <button type="submit" class="btn btn-warning"> Finalizar </button>
+    </form>
+
+</div>
+
+</div>
+      
+
+    </div>
+    
+
+</div>
+
+
+</div>
+{% endblock %}

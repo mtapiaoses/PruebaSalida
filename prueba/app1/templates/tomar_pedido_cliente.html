@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block contenido %}
+{% load static %}
+
+<button class="btn btn-warning m-1"><a href="/perfil_cliente/">VOLVER A PEDIDOS</a></button>
+
+<button class="btn btn-warning m-1"><a href="/limpiar_carrito_cliente/">LIMPIAR CARRITO</a></button>
+<button class="btn btn-warning m-1"><a href="/finalizar_pedido_cliente/">FINALIZAR PEDIDO </a></button>
+<hr>
+<div class="row justify-content-center">
+    {% for x in lista %}
+
+    <div class="col-sm-12  col-md-6  col-lg-3 m-1">
+
+        <div class="card " style="box-shadow: 2px 2px 10px rgba(0,0,0,0.3);">
+
+
+            <div class="card-body">
+
+                <div class="text-center">
+                     <a href="/producto/{{x.id}}">
+                        <img src="{{x.imagen_f.url}}" alt="" width="220px">
+                    </a>
+                </div>
+
+                <div>
+                    <strong>{{x.nombre}}</strong>
+                 </div>
+
+                <div style="color: #00D879;">
+                    <h2>$ {{x.precio}} c/u</h2>
+                 </div>
+
+                <div>
+                    <form action="/ag_pro_cliente/" method="POST">
+                        {% csrf_token %}
+                        <input class="" type="number" class="form-control" name="cantidad_id" style="width: 50%;">
+                        <input type="hidden" class="" name="producto_id"  value="{{x.id}}">
+                        <input type="submit" value="AGREGAR" class="btn mt-1" style="border:none; background-color: #00D879;color:white">
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %} {% block contenido %} {% load static%}
+<div class="row justify-content-center ">
+
+  <div class="" >
+
+
+
+    <table class="table">
+      <thead style="background-color: #00D879;color:white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">
+
+        <tr>
+          <td>
+            DATOS
+          </td>
+          <td>
+            EMPLEADO
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Email
+          </td>
+          <td>
+            {{user.email}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Username
+          </td>
+          <td>
+            {{user.username}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Nombre
+          </td>
+          <td>
+            {{user.first_name}}
+        </tr>
+
+        <tr>
+          <td>
+            Apellido
+          </td>
+          <td>
+            {{user.last_name}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="" >
+
+
+
+      <a href="/tomar_pedido_staff/"><button class="btn btn-warning m-1">TOMAR PEDIDO</button></a>
+      <a href="/registro_producto/"><button class="btn btn-warning">REGISTRAR PRODUCTO</button></a>
+     <a href="/productos/"> <button class="btn btn-warning">LISTA PRODUCTO</button></a>
+
+
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>FECHA</th>
+            <th>DIRECCION</th>
+            <th>COMUNA</th>
+            <th>ESTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in lista %}
+          <tr>
+            <td><button class="btn btn-danger"><a href="/pedido_e/{{x.id}}">{{x.id}}</a></button> </td>
+            <td> {{x.fecha}}</td>
+            <td> {{x.calle_entrega}}</td>
+            <td> {{x.comuna}}</td>
+            <td> {{x.estado}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+{% endblock %}
